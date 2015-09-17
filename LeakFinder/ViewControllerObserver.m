@@ -33,6 +33,8 @@ static void swizzledDismissMethod(UIViewController *self, SEL _cmd, BOOL animate
     // controller.
     if (self.presentedViewController) {
         [observer startObservingViewController:self.presentedViewController];
+    } else {
+        [observer startObservingViewController:self];
     }
 
     // And call the original implementation, because we still want to dismiss the view.
