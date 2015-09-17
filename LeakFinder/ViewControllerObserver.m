@@ -132,6 +132,9 @@ static NSArray* swizzledPopToRootViewControllerMethod(UINavigationController *se
     for (UIView *view in viewController.view.subviews) {
         [views addPointer:(__bridge void *)view];
     }
+    for (UIViewController *childViewController in viewController.childViewControllers) {
+        [self startObservingViewController:childViewController];
+    }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (self.timeOut * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (weakViewController) {
             NSLog(@"Possible memory leak: ViewController %@ (%@)", weakViewController, [weakViewController class]);
