@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2322B74E1BAB4ABF00E2CAC3 /* PushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322B74D1BAB4ABF00E2CAC3 /* PushedViewController.m */; };
 		C753E471C4F4CF5A55588F4F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C753E5703D65B43C6E64C8DB /* ViewController.m */; };
 		C753E4D2E728E05BB0DE0A8E /* LeakFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C753E67150B624258BFE7B41 /* LeakFinderTests.m */; };
 		C753E627233B97ED721E8154 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C753E1C4110A0397949B2A98 /* AppDelegate.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2322B74C1BAB4ABF00E2CAC3 /* PushedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushedViewController.h; sourceTree = "<group>"; };
+		2322B74D1BAB4ABF00E2CAC3 /* PushedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushedViewController.m; sourceTree = "<group>"; };
 		C753E009E8A622CEFE08E4D6 /* LeakFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeakFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C753E0B3F22C57A7A06725A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C753E0E33E2E233DD4C9F562 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				C753E5703D65B43C6E64C8DB /* ViewController.m */,
 				C753E6670AEBEB659578B926 /* ViewControllerObserver.m */,
 				C753EBDE644FD5CF20D679BD /* ViewControllerObserver.h */,
+				2322B74C1BAB4ABF00E2CAC3 /* PushedViewController.h */,
+				2322B74D1BAB4ABF00E2CAC3 /* PushedViewController.m */,
 			);
 			path = LeakFinder;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				C753E627233B97ED721E8154 /* AppDelegate.m in Sources */,
 				C753E471C4F4CF5A55588F4F /* ViewController.m in Sources */,
 				C753EEE4912BAE4A80C47B20 /* ViewControllerObserver.m in Sources */,
+				2322B74E1BAB4ABF00E2CAC3 /* PushedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +413,7 @@
 				C753EB5BF7916E3FDA28432F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C753E891F6C1F71F717139F2 /* Build configuration list for PBXNativeTarget "LeakFinder" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +422,7 @@
 				C753ED23A80818C9823F75B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

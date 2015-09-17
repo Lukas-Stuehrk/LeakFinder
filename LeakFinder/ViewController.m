@@ -28,8 +28,8 @@ void holdReference(id foo) {
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // self.viewController = self;
-    holdReference([self.view.subviews firstObject]);
+    self.viewController = self;
+    //holdReference([self.view.subviews firstObject]);
 }
 
 
