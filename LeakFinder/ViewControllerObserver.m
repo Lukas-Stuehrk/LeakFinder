@@ -23,6 +23,8 @@
     IMP _originalPopToRootViewControllerImplementation;
 }
 
+#pragma mark - Implementations for the swizzled methods
+
 static void swizzledDismissMethod(UIViewController *self, SEL _cmd, BOOL animated, id completion) {
 
     ViewControllerObserver *observer = [ViewControllerObserver sharedInstance];
@@ -84,6 +86,7 @@ static NSArray* swizzledPopToRootViewControllerMethod(UINavigationController *se
     }
 }
 
+#pragma mark - Creation & Initialization
 
 + (instancetype)sharedInstance {
     static dispatch_once_t onceToken;
@@ -124,14 +127,24 @@ static NSArray* swizzledPopToRootViewControllerMethod(UINavigationController *se
     return self;
 }
 
+#pragma mark - Observation
+
+/**
+ * Helper function that recursively adds a view and all of it's subviews to the given array of observed views.
+ */
+void observeView(UIView *view, NSPointerArray *observedViews) {
+    [observedViews addPointer:(__bridge void *)view];
+    for (UIView *childView in view.subviews) {
+        observeView(childView, observedViews);
+    }
+}
 
 - (void)startObservingViewController:(UIViewController *)viewController {
     __weak UIViewController *weakViewController = viewController;
-    NSPointerArray *views = [NSPointerArray weakObjectsPointerArray];
-    [views addPointer:(__bridge void *)viewController.view];
-    for (UIView *view in viewController.view.subviews) {
-        [views addPointer:(__bridge void *)view];
-    }
+
+    NSPointerArray *observedViews = [NSPointerArray weakObjectsPointerArray];
+    observeView(viewController.view, observedViews);
+
     for (UIViewController *childViewController in viewController.childViewControllers) {
         [self startObservingViewController:childViewController];
     }
@@ -139,7 +152,7 @@ static NSArray* swizzledPopToRootViewControllerMethod(UINavigationController *se
         if (weakViewController) {
             NSLog(@"Possible memory leak: ViewController %@ (%@)", weakViewController, [weakViewController class]);
         } else {
-            for (UIView *view in views.allObjects) {
+            for (UIView *view in observedViews.allObjects) {
                 NSLog(@"possible memory leak: %@", view);
             }
         }
