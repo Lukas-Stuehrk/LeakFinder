@@ -45,6 +45,7 @@
 		C753E859618D46A462315822 /* LeakFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeakFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C753E9AC77111A0D5BE3F172 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C753EBDE644FD5CF20D679BD /* ViewControllerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerObserver.h; sourceTree = "<group>"; };
+		C753EC76B964A83F4DC6C172 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C753EE63C4891F272C4287C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +73,7 @@
 				C753E3B4D9BD84F60E377EC3 /* Products */,
 				C753EBA0F20EC279E4368832 /* LeakFinder */,
 				C753E28C11BA1387E4BB5671 /* LeakFinderTests */,
+				C753EC76B964A83F4DC6C172 /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
