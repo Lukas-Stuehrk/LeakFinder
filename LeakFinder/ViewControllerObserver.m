@@ -19,7 +19,7 @@
     /** The original implementation of UINavigationController's popToViewController:animated: method */
     IMP _originalPopToViewControllerImplementation;
 
-    /** The original implementation of UINavigationsController's popToRootViewController: method */
+    /** The original implementation of UINavigationController's popToRootViewController: method */
     IMP _originalPopToRootViewControllerImplementation;
 }
 
@@ -130,7 +130,7 @@ static NSArray* swizzledPopToRootViewControllerMethod(UINavigationController *se
 #pragma mark - Observation
 
 /**
- * Helper function that recursively adds a view and all of it's subviews to the given array of observed views.
+ * Helper function that recursively adds a view and all of its subviews to the given array of observed views.
  */
 void observeView(UIView *view, NSPointerArray *observedViews) {
     [observedViews addPointer:(__bridge void *)view];
