@@ -1,0 +1,17 @@
+PODS:
+  - Kiwi (2.4.0)
+  - LeakFinder (0.1.0)
+
+DEPENDENCIES:
+  - Kiwi
+  - LeakFinder (from `../`)
+
+EXTERNAL SOURCES:
+  LeakFinder:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  LeakFinder: d9de271a175e8ad08c0190bde79d596ae1a32880
+
+COCOAPODS: 0.38.2

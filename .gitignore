@@ -20,3 +20,9 @@ xcuserdata
 
 #AppCode
 .idea/
+
+# MacOS
+.DS_Store
+
+# Cocoa Pods
+Pods/
