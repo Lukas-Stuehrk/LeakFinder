@@ -7,6 +7,7 @@
 
 #import <objc/runtime.h>
 #import "ViewControllerObserver.h"
+#import "ViewControllerObserverSystemOutReporter.h"
 
 
 @implementation ViewControllerObserver {
@@ -122,7 +123,8 @@ static NSArray* swizzledPopToRootViewControllerMethod(UINavigationController *se
 
 - (instancetype)init {
     if (self = [super init]) {
-        _timeOut = 2;
+        _timeOut = 4;
+        _reporter = [ViewControllerObserverSystemOutReporter new];
     }
     return self;
 }
@@ -141,6 +143,7 @@ void observeView(UIView *view, NSPointerArray *observedViews) {
 
 - (void)startObservingViewController:(UIViewController *)viewController {
     __weak UIViewController *weakViewController = viewController;
+    NSString *viewControllerDescription = [viewController description];
 
     NSPointerArray *observedViews = [NSPointerArray weakObjectsPointerArray];
     observeView(viewController.view, observedViews);
@@ -148,12 +151,16 @@ void observeView(UIView *view, NSPointerArray *observedViews) {
     for (UIViewController *childViewController in viewController.childViewControllers) {
         [self startObservingViewController:childViewController];
     }
+
+    viewController = nil;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (self.timeOut * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (weakViewController) {
-            NSLog(@"Possible memory leak: ViewController %@ (%@)", weakViewController, [weakViewController class]);
+            [self.reporter reportPossibleViewControllerLeak:viewController];
+        // Don't report leaking views when the view controller is already leaking because the views will never be
+        // deallocated when the view controller isn't deallocated.
         } else {
             for (UIView *view in observedViews.allObjects) {
-                NSLog(@"possible memory leak: %@", view);
+                [self.reporter reportPossibleViewLeak:view viewController:viewControllerDescription];
             }
         }
     });

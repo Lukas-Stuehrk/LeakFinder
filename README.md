@@ -46,7 +46,9 @@ similar to this in the console (or the system log to be precise):
 2015-09-19 23:16:28.838 LeakFinder[8262:79575] Possible memory leak: ViewController <MyViewController: 0x7fa941765f90> (MyViewController)
 ```
 
-This means that you have a possible memory leak in the view controller class `MyViewController`.
+This means that you have a possible memory leak in the view controller class `MyViewController`. If you want to get
+more or better information on the leaking object, you can write your own reporter to have full control about the
+reporting.
 
 If you want to see some examples how it works without the need to integrate it into your app, you can run
 
@@ -55,6 +57,25 @@ pod try LeakFinder
 ```
 
 to open an example application which uses LeakFinder to find some memory leaks.
+
+## Using a custom reporter
+
+All detected memory leaks are reported using the reporter of the view controller observer. You can exchange the
+reporter by setting the `reporter` property on the view controller observer:
+
+```objective-c
+MyCustomReporter myReporter = [MyCustomReporter new];
+[ViewControllerObserver sharedInstance].reporter = myReporter;
+```
+
+For example, you could implement a reporter which throws an error every time a memory leak is detected. The reporter
+also gets passed an instance of the leaking object, so you can set breakpoints in the reporter to further inspect the
+leaking object.
+
+Any object which implements the `ViewControllerObserverReporter` protocol can be a reporter.
+
+By default, the `ViewControllerObserverSystemOutReporter` is used to report memory leaks. It reports all leaks to the
+system log.
 
 ## How it works
 
