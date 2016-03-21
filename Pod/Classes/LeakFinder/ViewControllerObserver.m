@@ -155,7 +155,9 @@ void observeView(UIView *view, NSPointerArray *observedViews) {
     viewController = nil;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (self.timeOut * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (weakViewController) {
-            [self.reporter reportPossibleViewControllerLeak:viewController];
+            UIViewController *strongViewController = weakViewController;
+            [self.reporter reportPossibleViewControllerLeak:strongViewController];
+            strongViewController = nil;
         // Don't report leaking views when the view controller is already leaking because the views will never be
         // deallocated when the view controller isn't deallocated.
         } else {
