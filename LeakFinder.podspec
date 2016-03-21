@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "LeakFinder"
-  s.version          = "0.2.0"
+  s.version          = "0.2.1"
   s.summary          = "A simple tool to find memory leaks in UI code."
   s.description      = <<-DESC
 A simple tool to find memory leaks in UI code. Automatically detects memory leaks in view controllers and views.
