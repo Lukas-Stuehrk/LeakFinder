@@ -11,7 +11,7 @@
     NSLog(@"possible memory leak (view controller): %@ (%@)", viewController, [viewController class]);
 }
 
-- (void)reportPossibleViewLeak:(UIView *)view viewController:(UIView *)viewController {
+- (void)reportPossibleViewLeak:(UIView *)view viewController:(NSString *)viewController {
     NSLog(@"possible memory leak (view): %@ (%@), view controller: %@", view, [view class], viewController);
 }
 
